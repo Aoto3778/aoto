@@ -11,7 +11,7 @@ load_result_cul = [
 ]
 nNum = 48
 tate = np.arange(1, nNum + 1)
-cut = pd.DataFrame(data=0, index=tate, columns=load_result_cul)
+cut = pd.DataFrame(data=0.0, index=tate, columns=load_result_cul, dtype=float)
 print(len(load_result_cul))
 
 
@@ -38,4 +38,4 @@ for j in range(0, 48):
     cut.iat[x, 9] = float(load_result.iat[2, 10] - load_result.iat[2, 12])
     x = x + 1
 #出力
-cut.to_csv("../data/output/data_random_walk_1day.csv", encoding="shift_jis", index=False)
+cut.to_csv("../data/output/random_test/data_random_walk_1day.csv", encoding="shift_jis", index=False)

@@ -16,10 +16,10 @@ PV_cul = [
 ]
 nNum = 1
 tate = np.arange(1, nNum + 1)
-cut = pd.DataFrame(data=0, index=tate, columns=PV_cul)
+cut = pd.DataFrame(data=0, index=tate, columns=PV_cul, dtype=float)
 
 # データ読み込み
-df = pd.read_csv("../data/output/data_random_walk_1day.csv", encoding="shift_jis")
+df = pd.read_csv("../data/output/random_test/data_random_walk_1day.csv", encoding="shift_jis")
 
 # 回帰・プロット
 for k in range(3):
@@ -59,11 +59,11 @@ for k in range(3):
     ax.set_xlabel("p (kW)")
     ax.set_ylabel("q (kvar)")
     ax.set_zlabel("vm_delta (pu.)")
-    ax.set_title(f"Step {k} 回帰散布図")
+    ax.set_title(f"Step {k} regression plot")
 
 # グラフのレイアウト調整・保存
 plt.tight_layout()
-plt.savefig("./output/regression_all_steps.png", dpi=300, bbox_inches='tight')
+plt.savefig("../data/output/random_test/regression_all_steps.png", dpi=300, bbox_inches='tight')
 
 # 回帰係数・切片を保存
-cut.to_csv("./output/回帰係数・切片random_walk2_robust.csv", encoding="shift_jis", index=False)
+cut.to_csv("../data/output/random_test/regression_coefficients_random_walk2_robust.csv", encoding="shift_jis", index=False)

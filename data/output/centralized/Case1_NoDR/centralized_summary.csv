@@ -1,0 +1,11 @@
+Metric,Value
+Case,Case1_NoDR
+Description,DRなし：電力コスト + ペナルティ
+Objective Value,-155.1401738267112
+Real Time,0.1512737274169922
+CPU Time,0.33084024700000003
+MIP Gap,8.542924540654395e-05
+Variables,4140
+Constraints,3714
+Total Household Cost,-155.14017382671113
+DR Period Net Power,-24.292717264953968

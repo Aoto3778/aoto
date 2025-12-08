@@ -1,0 +1,13 @@
+Metric,Value
+Case,Case3_UpDR
+Description,上げDR：電力コスト - (買電-売電) + ペナルティ
+Status,MAX_ITER
+Objective Value,
+Lower Bound,-30000000105.0
+Upper Bound,inf
+Gap,inf
+Iterations,50
+Real Time,16.150891065597534
+CPU Time,169.62520516899997
+Optimality Cuts,0
+Feasibility Cuts,150

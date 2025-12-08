@@ -43,7 +43,7 @@ pp.create_line(empty_net, from_bus=bus_lv21, to_bus=bus_lv22, length_km=0.015, s
 pp.create_line(empty_net, from_bus=bus_lv22, to_bus=bus_lv23, length_km=0.016, std_type="line_type1", name="LV Line 23")
 
 # ベースネットワーク保存
-pp.to_pickle(empty_net, "../data/output/network/base_net.p")
+pp.to_pickle(empty_net, "../data/output/random_test/base_net.p")
 
 # CSVデータ読み込み
 demand_house1 = pd.read_csv("../data/input/electric_demand_1y_30min/electric_demand_1y_30min_01.csv", encoding="shift_jis")
@@ -52,7 +52,7 @@ demand_house3 = pd.read_csv("../data/input/electric_demand_1y_30min/electric_dem
 
 # メインループ
 for i in range(0, 48):
-    simulation_net = pp.from_pickle("../data/output/network/base_net.p")
+    simulation_net = pp.from_pickle("../data/output/random_test/base_net.p")
 
     # ランダム値
     vv1=random.uniform(0,0.15)

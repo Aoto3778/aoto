@@ -1,0 +1,13 @@
+Metric,Value
+Case,Case1_NoDR
+Description,DRなし：電力コスト + ペナルティ
+Status,MAX_ITER
+Objective Value,
+Lower Bound,-30000000000.0
+Upper Bound,inf
+Gap,inf
+Iterations,50
+Real Time,16.8466579914093
+CPU Time,181.048247694
+Optimality Cuts,0
+Feasibility Cuts,150
