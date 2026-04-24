@@ -1,7 +1,7 @@
-import { useState } from 'react';
-
 interface DiaryInputProps {
-  onSubmit: (text: string) => void;
+  value: string;
+  onChange: (text: string) => void;
+  onSubmit: () => void;
   isLoading: boolean;
 }
 
@@ -14,12 +14,10 @@ function formatDate(date: Date): string {
   });
 }
 
-export default function DiaryInput({ onSubmit, isLoading }: DiaryInputProps) {
-  const [text, setText] = useState('');
-
-  function handleSubmit() {
-    if (text.trim() && !isLoading) {
-      onSubmit(text.trim());
+export default function DiaryInput({ value, onChange, onSubmit, isLoading }: DiaryInputProps) {
+  function handleKeyDown(e: React.KeyboardEvent) {
+    if (e.key === 'Enter' && (e.metaKey || e.ctrlKey) && value.trim() && !isLoading) {
+      onSubmit();
     }
   }
 
@@ -31,8 +29,9 @@ export default function DiaryInput({ onSubmit, isLoading }: DiaryInputProps) {
       </div>
 
       <textarea
-        value={text}
-        onChange={(e) => setText(e.target.value)}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        onKeyDown={handleKeyDown}
         placeholder="Write about your day in English... (any length)"
         disabled={isLoading}
         rows={8}
@@ -42,11 +41,14 @@ export default function DiaryInput({ onSubmit, isLoading }: DiaryInputProps) {
       />
 
       <div className="flex items-center justify-between mt-3">
-        <span className="text-xs text-gray-400">{text.length} characters</span>
+        <span className="text-xs text-gray-400">
+          {value.length} characters
+          <span className="ml-2 text-gray-300">· ⌘↵ to submit</span>
+        </span>
 
         <button
-          onClick={handleSubmit}
-          disabled={isLoading || !text.trim()}
+          onClick={onSubmit}
+          disabled={isLoading || !value.trim()}
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-500 text-white text-sm font-medium
             hover:bg-blue-600 disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed
             transition-colors focus:outline-none focus:ring-2 focus:ring-blue-300"

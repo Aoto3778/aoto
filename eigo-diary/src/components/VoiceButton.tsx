@@ -1,11 +1,10 @@
 import { Volume2, VolumeX } from 'lucide-react';
-import { useVoice } from '../hooks/useVoice';
+import { useVoiceSettings } from '../contexts/VoiceContext';
 
 interface VoiceButtonProps {
   text: string;
   rate?: number;
   pitch?: number;
-  /** Optional label shown beside the icon for accessibility */
   label?: string;
   className?: string;
 }
@@ -17,7 +16,7 @@ export default function VoiceButton({
   label,
   className = '',
 }: VoiceButtonProps) {
-  const { speak, stop, isSpeaking, isSupported } = useVoice();
+  const { speak, stop, isSpeaking, isSupported } = useVoiceSettings();
 
   if (!isSupported) {
     return (
@@ -53,7 +52,6 @@ export default function VoiceButton({
           : 'text-gray-500 hover:text-gray-700'}
         ${className}`}
     >
-      {/* Animated pulse ring visible only while speaking */}
       {isSpeaking && (
         <span
           aria-hidden="true"
